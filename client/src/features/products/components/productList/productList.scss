@@ -1,0 +1,14 @@
+.product-cards {
+  max-height: 600px;
+  overflow-y: auto;
+  flex: 3;
+  border: 1px solid rgb(225, 219, 219);
+  border-radius: 8px;
+  padding: 20px 40px;
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}

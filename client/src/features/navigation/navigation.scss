@@ -1,0 +1,17 @@
+@import './../../styles/common.scss';
+
+.header {
+  margin: 5px auto;
+  &__nav-list {
+    display: flex;
+  }
+
+  &__nav-list-item {
+    padding: 10px 20px;
+    border-right: 1px solid #000;
+
+    &:last-child {
+      border: none;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+.side-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  max-height: 600px;
+  overflow-y: auto;
+  border: 1px solid rgb(225, 219, 219);
+  border-radius: 8px;
+
+  &__title {
+    margin: 20px 0;
+  }
+}
+.shop-list {
+  &__item {
+    padding: 10px 50px;
+    border: 1px solid rgb(225, 219, 219);
+    border-radius: 8px;
+    margin-bottom: 10px;
+
+    &:hover,
+    &:focus {
+      background-color: rgb(225, 219, 219);
+    }
+  }
+}
