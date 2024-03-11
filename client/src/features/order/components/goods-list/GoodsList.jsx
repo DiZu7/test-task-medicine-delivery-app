@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import GoodsItem from '../goods-item/GoodsItem.jsx';
-import { cartStorage } from '../../../products/storage/cartStorage.js';
 
 const GoodsList = ({ cart, onChange }) => {
   return (

@@ -1,6 +1,7 @@
 import React from 'react';
-import './shopList.scss';
 import Shop from '../shop/Shop.jsx';
+
+import './shopList.scss';
 
 const ShopList = ({ shopList, setSelectedShop }) => {
   return (

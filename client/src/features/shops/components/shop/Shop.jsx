@@ -1,5 +1,4 @@
 import React from 'react';
-import { gateways } from '../../../../gateways/gateways';
 
 const Shop = ({ name, setSelectedShop, shopId }) => {
   return (

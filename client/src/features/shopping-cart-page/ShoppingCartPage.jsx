@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import iziToast from 'izitoast';
 import GoodsList from '../order/components/goods-list/GoodsList.jsx';
 import { gateways } from '../../gateways/gateways.js';
 import { cartStorage } from '../products/storage/cartStorage.js';
 
 import './shoppingCartPage.scss';
-import iziToast from 'izitoast';
 
 const ShoppingCartPage = () => {
   const [totalPrice, setTotalPrice] = useState(0);
+  const [cart, setCart] = useState(cartStorage.getCart());
+
+  useEffect(() => calculateTotalPrice(), [])
 
   const calculateTotalPrice = () => {
     const totalPrice = cartStorage
@@ -17,17 +20,7 @@ const ShoppingCartPage = () => {
     setTotalPrice(totalPrice);
   };
 
-  // useEffect(() => {
-  //   calculateTotalPrice();
-  // }, []);
-
-  const [cart, setCart] = useState(null);
-
-  useEffect(() => {
-    updateCart();
-  }, []);
-
-  const updateCart = () => {
+  const onCartUpdated = () => {
     setCart(cartStorage.getCart());
     calculateTotalPrice();
   };
@@ -53,7 +46,9 @@ const ShoppingCartPage = () => {
 
       event.target.reset();
       cartStorage.clearCart();
-      updateCart();
+
+      onCartUpdated();
+
       iziToast.success({
         title: 'success',
         message: 'Your order successfully created',
@@ -110,11 +105,11 @@ const ShoppingCartPage = () => {
               required
             />
           </div>
-          <GoodsList cart={cart} onChange={updateCart} calculateTotalPrice={calculateTotalPrice} />
+          <GoodsList cart={cart} onChange={onCartUpdated} />
         </div>
 
         <div className="order-form__footer">
-          <p className="order-form__total-price">Total price: {totalPrice} </p>
+          <p className="order-form__total-price">Total price: {totalPrice.toFixed(2)} </p>
           <button className="order-form__btn" type="submit">
             Submit
           </button>

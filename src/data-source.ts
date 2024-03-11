@@ -1,13 +1,14 @@
 import 'reflect-metadata';
 import { DataSource } from 'typeorm';
+import { DB_HOST, DB_NAME, DB_PASSWORD, DB_PORT, DB_USERNAME } from './config';
 
 export const AppDataSource = new DataSource({
   type: 'mysql',
-  host: '127.0.0.1',
-  port: 3306,
-  username: 'root',
-  password: '',
-  database: 'medicine_delivery',
+  host: DB_HOST,
+  port: DB_PORT,
+  username: DB_USERNAME,
+  password: DB_PASSWORD,
+  database: DB_NAME,
   synchronize: true,
   logging: false,
   entities: ['src/entity/*.ts'],

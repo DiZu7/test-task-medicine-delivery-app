@@ -39,7 +39,7 @@ export const createOrder = async (data: OrderDataInput): Promise<void> => {
 		return orderItem;
   });
 
-  order.totalPrice = totalPrice;
+  order.totalPrice = parseFloat(totalPrice.toFixed(2));
 
   await orderRepository.save(order);
 }

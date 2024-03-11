@@ -6,11 +6,12 @@ import cors from 'cors';
 
 import { AppRoutes } from './route';
 import { AppDataSource } from './data-source';
+import { PORT } from './config';
 
 AppDataSource.initialize()
   .then(async (connection) => {
     const app = express();
-    
+
     app.use(cors());
     app.use(bodyParser.json());
     app.use(express.static(path.join(__dirname, 'public')));
@@ -27,8 +28,8 @@ AppDataSource.initialize()
       );
     });
 
-    app.listen(3000);
+    app.listen(PORT);
 
-    console.log('Express application is up and running on port 3000');
+    console.log(`Express application is up and running on port ${PORT}`);
   })
   .catch((error) => console.log('TypeORM connection error: ', error));
